@@ -1,0 +1,3 @@
+/Users/wsh32/projects/CLion/STMDemo/cmake-build-debug-stm32/CMakeFiles/rebuild_cache.dir
+/Users/wsh32/projects/CLion/STMDemo/cmake-build-debug-stm32/CMakeFiles/edit_cache.dir
+/Users/wsh32/projects/CLion/STMDemo/cmake-build-debug-stm32/CMakeFiles/STMDemo.elf.dir

@@ -1,0 +1,5 @@
+"/Users/wsh32/Library/Application Support/JetBrains/Toolbox/apps/CLion-ARM/ch-0/203.7148.70/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/opt/homebrew/bin/arm-none-eabi-gcc -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ -G "CodeBlocks - Unix Makefiles" /Users/wsh32/projects/CLion/STMDemo
+-- Minimal optimization, debug info included
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/wsh32/projects/CLion/STMDemo/cmake-build-debug-stm32
