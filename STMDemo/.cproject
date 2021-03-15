@@ -37,7 +37,7 @@
               							
               <option id="fr.ac6.managedbuild.option.gnu.cross.prefix.1604617243" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix" value="arm-none-eabi-" valueType="string" />
               							
-              <option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1475167794" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu" value="" valueType="string" />
+              <option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1475167794" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu" value="STM32F103C8Tx" valueType="string" />
               							
               <option id="fr.ac6.managedbuild.option.gnu.cross.board.1235348859" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board" value="STMDemo" valueType="string" />
               							
@@ -234,7 +234,7 @@
               							
               <option id="fr.ac6.managedbuild.option.gnu.cross.prefix.1604617243" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix" value="arm-none-eabi-" valueType="string" />
               							
-              <option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1475167794" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu" value="" valueType="string" />
+              <option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1475167794" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu" value="STM32F103C8Tx" valueType="string" />
               							
               <option id="fr.ac6.managedbuild.option.gnu.cross.board.1235348859" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board" value="STMDemo" valueType="string" />
               							

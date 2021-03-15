@@ -3,6 +3,7 @@
 */cmake-build-debug/*
 */cmake-build-debug-stm32/*
 */build/
+*/.vscode
 
 # Vim
 *.swp
