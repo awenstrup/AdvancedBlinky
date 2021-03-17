@@ -11,3 +11,6 @@ build/
 # MacOS
 .DS_Store
 
+# C
+*.o
+
