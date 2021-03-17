@@ -6,11 +6,11 @@
 #define NEO_PIXEL_MSG_SIZE_BYTES 3  // 3 bytes (1 byte for r, g, and b)
 
 struct {
-    unsigned char r, g, b;  // Use char to fit the 8 bit values
+    uint8_t r, g, b;  // Use char to fit the 8 bit values
 } typedef Color_t;
 
 struct {
-    unsigned char *buffer;
+    uint8_t *buffer;
     size_t buffer_size;
     int num_pixels;
 } typedef Neopixel_t;

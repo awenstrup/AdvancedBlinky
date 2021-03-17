@@ -16,7 +16,7 @@ Neopixel_t *neo_initialize_strip(int num_leds) {
 
     neo->num_pixels = num_leds;
     neo->buffer_size = num_leds * NEO_PIXEL_MSG_SIZE_BYTES;
-    neo->buffer = malloc(neo->buffer_size * sizeof(char));
+    neo->buffer = malloc(neo->buffer_size * sizeof(uint8_t));
 
     // Check that malloc is successful
     if (neo->buffer == NULL) {
