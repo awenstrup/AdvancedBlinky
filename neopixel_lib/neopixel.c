@@ -48,3 +48,11 @@ int neo_set_pixel(Neopixel_t *neo, int pixel_id, Color_t color) {
     return 0;
 }
 
+/**
+ * @brief Destructs a Neopixel_t object
+ */
+void free_neopixel(Neopixel_t *neo) {
+    free(neo->buffer);
+    free(neo);
+}
+

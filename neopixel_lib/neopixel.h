@@ -17,5 +17,6 @@ struct {
 
 Neopixel_t *neo_initialize_strip(int num_leds);
 int neo_set_pixel(Neopixel_t *neo, int pixel_id, Color_t color);
+void free_neopixel(Neopixel_t *neo);
 
 #endif
