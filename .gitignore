@@ -1,10 +1,13 @@
 # IDE and build files
-*/.idea/
-*/cmake-build-debug/*
-*/cmake-build-debug-stm32/*
-*/build/
-*/.vscode
+.idea/
+cmake-build-debug/
+cmake-build-debug-stm32/
+build/
+.vscode
 
 # Vim
 *.swp
+
+# MacOS
+.DS_Store
 
