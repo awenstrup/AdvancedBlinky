@@ -13,10 +13,14 @@ struct {
     unsigned char *buffer;
     size_t buffer_size;
     int num_pixels;
+    int buffer_index;
 } typedef Neopixel_t;
+
+int ticker;
 
 Neopixel_t *neo_initialize_strip(int num_leds);
 int neo_set_pixel(Neopixel_t *neo, int pixel_id, Color_t color);
 void free_neopixel(Neopixel_t *neo);
+void callback(Neopixel_t *neo, int pin);
 
 #endif
