@@ -69,12 +69,16 @@ void callback(Neopixel_t *neo, GPIO_TypeDef *port, uint16_t pin) {
             HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
             ticker++;
             break;
+
         case 1:
             // set pin to data value
-            int bit = (neo->buffer[neo->buffer_index/8] & (1 << (neo->buffer_index % 8)));
+            int bit = neo->buffer[neo->buffer_index/8] & (1 << (7 - (neo->buffer_index % 8)));
             HAL_GPIO_WritePin(port, pin, ((bit == 0) ? GPIO_PIN_RESET : GPIO_PIN_SET));
+
+            neo->buffer_index++;
             ticker++;
             break;
+
         case 2:
             // set pin low
             HAL_GPIO_WritePin(port, pin, GPIO_PIN_SET);

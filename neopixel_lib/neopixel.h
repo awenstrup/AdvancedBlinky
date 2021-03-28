@@ -13,7 +13,7 @@ struct {
     uint8_t *buffer;
     size_t buffer_size;
     int num_pixels;
-    int buffer_index;
+    size_t buffer_index;
 } typedef Neopixel_t;
 
 int ticker;
