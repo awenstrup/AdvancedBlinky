@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+// TODO #include "stm32f1xx_hal.h"
 #include "neopixel.h"
 
 int ticker = 0;
