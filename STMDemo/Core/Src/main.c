@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "neopixel.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,20 +93,23 @@ int main(void)
   MX_DMA_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  Neopixel_t *neopixel = neo_initialize_strip(8);
+  Color_t *color = malloc(sizeof(Color_t)); // set to red below
+  color->r = 255;
+  color->g = 0;
+  color->b = 0;
 
-  HAL_TIM_Base_Start_IT(&htim1);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-
+  for (int i = 0; i < 8; i++) {
+    neo_set_pixel(neopixel, i, *color);
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     while (1)
     {
-      if (counter >= 100000) {
-          HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-          counter = 0;
-      }
+      led_render(neopixel);
+      HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
