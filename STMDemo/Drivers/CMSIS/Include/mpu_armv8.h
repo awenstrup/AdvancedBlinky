@@ -94,7 +94,7 @@
 
 /** \brief Region Limit Address Register value
 * \param LIMIT The limit address bits [31:5] for this memory region. The value is one extended.
-* \param IDX The attribute index to be associated with this memory region.
+* \param IDX The attribute neo_dma_index to be associated with this memory region.
 */
 #define ARM_MPU_RLAR(LIMIT, IDX) \
   ((LIMIT & MPU_RLAR_LIMIT_Msk) | \
@@ -163,7 +163,7 @@ __STATIC_INLINE void ARM_MPU_Disable_NS(void)
 
 /** Set the memory attribute encoding to the given MPU.
 * \param mpu Pointer to the MPU to be configured.
-* \param idx The attribute index to be set [0-7]
+* \param idx The attribute neo_dma_index to be set [0-7]
 * \param attr The attribute value to be set.
 */
 __STATIC_INLINE void ARM_MPU_SetMemAttrEx(MPU_Type* mpu, uint8_t idx, uint8_t attr)
@@ -173,14 +173,14 @@ __STATIC_INLINE void ARM_MPU_SetMemAttrEx(MPU_Type* mpu, uint8_t idx, uint8_t at
   const uint32_t mask = 0xFFU << pos;
   
   if (reg >= (sizeof(mpu->MAIR) / sizeof(mpu->MAIR[0]))) {
-    return; // invalid index
+    return; // invalid neo_dma_index
   }
   
   mpu->MAIR[reg] = ((mpu->MAIR[reg] & ~mask) | ((attr << pos) & mask));
 }
 
 /** Set the memory attribute encoding.
-* \param idx The attribute index to be set [0-7]
+* \param idx The attribute neo_dma_index to be set [0-7]
 * \param attr The attribute value to be set.
 */
 __STATIC_INLINE void ARM_MPU_SetMemAttr(uint8_t idx, uint8_t attr)
@@ -190,7 +190,7 @@ __STATIC_INLINE void ARM_MPU_SetMemAttr(uint8_t idx, uint8_t attr)
 
 #ifdef MPU_NS
 /** Set the memory attribute encoding to the Non-secure MPU.
-* \param idx The attribute index to be set [0-7]
+* \param idx The attribute neo_dma_index to be set [0-7]
 * \param attr The attribute value to be set.
 */
 __STATIC_INLINE void ARM_MPU_SetMemAttr_NS(uint8_t idx, uint8_t attr)

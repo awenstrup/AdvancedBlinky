@@ -594,7 +594,7 @@ typedef struct
 /** @defgroup RCCEx_Flag RCCEx Flag
   *        Elements values convention: 0XXYYYYYb
   *           - YYYYY  : Flag position in the register
-  *           - XX  : Register index
+  *           - XX  : Register neo_dma_index
   *                 - 01: CR register
   * @{
   */

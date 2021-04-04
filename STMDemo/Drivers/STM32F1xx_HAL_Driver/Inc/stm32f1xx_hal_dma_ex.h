@@ -52,7 +52,7 @@
 /**
   * @brief  Returns the current DMA Channel transfer complete flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer complete flag index.
+  * @retval The specified transfer complete flag neo_dma_index.
   */
 #define __HAL_DMA_GET_TC_FLAG_INDEX(__HANDLE__) \
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_TC1 :\
@@ -71,7 +71,7 @@
 /**
   * @brief  Returns the current DMA Channel half transfer complete flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified half transfer complete flag index.
+  * @retval The specified half transfer complete flag neo_dma_index.
   */      
 #define __HAL_DMA_GET_HT_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_HT1 :\
@@ -90,7 +90,7 @@
 /**
   * @brief  Returns the current DMA Channel transfer error flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer error flag index.
+  * @retval The specified transfer error flag neo_dma_index.
   */
 #define __HAL_DMA_GET_TE_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_TE1 :\
@@ -109,7 +109,7 @@
 /**
   * @brief  Return the current DMA Channel Global interrupt flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer error flag index.
+  * @retval The specified transfer error flag neo_dma_index.
   */
 #define __HAL_DMA_GET_GI_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_GL1 :\
@@ -167,7 +167,7 @@
 /**
   * @brief  Returns the current DMA Channel transfer complete flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer complete flag index.
+  * @retval The specified transfer complete flag neo_dma_index.
   */
 #define __HAL_DMA_GET_TC_FLAG_INDEX(__HANDLE__) \
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_TC1 :\
@@ -181,7 +181,7 @@
 /**
   * @brief  Return the current DMA Channel half transfer complete flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified half transfer complete flag index.
+  * @retval The specified half transfer complete flag neo_dma_index.
   */
 #define __HAL_DMA_GET_HT_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_HT1 :\
@@ -195,7 +195,7 @@
 /**
   * @brief  Return the current DMA Channel transfer error flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer error flag index.
+  * @retval The specified transfer error flag neo_dma_index.
   */
 #define __HAL_DMA_GET_TE_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_TE1 :\
@@ -209,7 +209,7 @@
 /**
   * @brief  Return the current DMA Channel Global interrupt flag.
   * @param  __HANDLE__: DMA handle
-  * @retval The specified transfer error flag index.
+  * @retval The specified transfer error flag neo_dma_index.
   */
 #define __HAL_DMA_GET_GI_FLAG_INDEX(__HANDLE__)\
 (((uint32_t)((__HANDLE__)->Instance) == ((uint32_t)DMA1_Channel1))? DMA_FLAG_GL1 :\

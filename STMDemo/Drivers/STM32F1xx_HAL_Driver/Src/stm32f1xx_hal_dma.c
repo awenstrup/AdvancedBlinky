@@ -161,7 +161,7 @@ HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
   assert_param(IS_DMA_PRIORITY(hdma->Init.Priority));
 
 #if defined (DMA2)
-  /* calculation of the channel index */
+  /* calculation of the channel neo_dma_index */
   if ((uint32_t)(hdma->Instance) < (uint32_t)(DMA2_Channel1))
   {
     /* DMA1 */
@@ -244,7 +244,7 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
   hdma->Instance->CMAR = 0U;
 
 #if defined (DMA2)
-  /* calculation of the channel index */
+  /* calculation of the channel neo_dma_index */
   if ((uint32_t)(hdma->Instance) < (uint32_t)(DMA2_Channel1))
   {
     /* DMA1 */
