@@ -125,7 +125,7 @@ void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) {
     } else if (neo_dma_index < num_pixels + 2) {
         // 1.25 us per bit * 24 bits per pixel = 30 us per pixel.
         // 2 pixels or 60 us is enough to reset
-        for (uint8_t i = 0; i < 48 / 2; i++) {
+        for (uint8_t i = 0; i < (48 / 2); i++) {
             wr_buf[i] = 0;
         } 
         neo_dma_index++;
@@ -142,13 +142,13 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) {
     int num_pixels = neopixel->num_pixels;
     if (neo_dma_index < num_pixels) {
         for(uint_fast8_t i = 24; i < 48; i++) {
-            wr_buf[i] = (neopixel->buffer[(i/8) + (neo_dma_index*NEO_PIXEL_MSG_SIZE_BYTES)] & (1 << (i%8))) ? PWM_HI : PWM_LO;
+            wr_buf[i] = (neopixel->buffer[((i - 24)/8) + (neo_dma_index*NEO_PIXEL_MSG_SIZE_BYTES)] & (1 << (i%8))) ? PWM_HI : PWM_LO;
         }
         neo_dma_index++;
     } else if (neo_dma_index < num_pixels + 2) {
         // 1.25 us per bit * 24 bits per pixel = 30 us per pixel.
         // 2 pixels or 60 us is enough to reset
-        for (uint8_t i = 0; i < 48 / 2; i++) {
+        for (uint8_t i = (48 / 2); i < 48; i++) {
             wr_buf[i] = 0;
         }
         neo_dma_index++;

@@ -66,42 +66,49 @@ static void MX_TIM2_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
-{
-  /* USER CODE BEGIN 1 */
+int main(void) {
+    /* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
+    /* USER CODE END 1 */
 
-  /* MCU Configuration--------------------------------------------------------*/
+    /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+    HAL_Init();
 
-  /* USER CODE BEGIN Init */
+    /* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+    /* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+    /* Configure the system clock */
+    SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+    /* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+    /* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_DMA_Init();
-  MX_TIM2_Init();
-  /* USER CODE BEGIN 2 */
-  int num_pixels = 2;
-  Neopixel_t *neopixel = neo_initialize_strip(num_pixels);
-  Color_t *color = malloc(sizeof(Color_t)); // set to red below
-  color->r = 255;
-  color->g = 0;
-  color->b = 0;
+    /* Initialize all configured peripherals */
+    MX_GPIO_Init();
+    MX_DMA_Init();
+    MX_TIM2_Init();
+    /* USER CODE BEGIN 2 */
+    int num_pixels = 5;
+    Neopixel_t *neopixel = neo_initialize_strip(num_pixels);
+    Color_t *color = malloc(sizeof(Color_t)); // set to red below
+    color->r = 0;
+    color->g = 0;
+    color->b = 0;
+
+    Color_t colors[5] = {
+        { 255, 0, 0 },
+        { 255, 255, 0 },
+        { 0, 255, 0 },
+        { 0, 0, 255 },
+        { 255, 0, 255 }
+    };
 
   for (int i = 0; i < num_pixels; i++) {
-    neo_set_pixel(neopixel, i, *color);
+      neo_set_pixel(neopixel, i, colors[i]);
   }
   /* USER CODE END 2 */
 
@@ -110,7 +117,7 @@ int main(void)
     while (1)
     {
       led_render(neopixel);
-      HAL_Delay(1000);
+      HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
