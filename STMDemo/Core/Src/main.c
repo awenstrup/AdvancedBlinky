@@ -93,13 +93,14 @@ int main(void)
   MX_DMA_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  Neopixel_t *neopixel = neo_initialize_strip(8);
+  int num_pixels = 2;
+  Neopixel_t *neopixel = neo_initialize_strip(num_pixels);
   Color_t *color = malloc(sizeof(Color_t)); // set to red below
   color->r = 255;
   color->g = 0;
   color->b = 0;
 
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < num_pixels; i++) {
     neo_set_pixel(neopixel, i, *color);
   }
   /* USER CODE END 2 */
@@ -109,7 +110,7 @@ int main(void)
     while (1)
     {
       led_render(neopixel);
-      HAL_Delay(50);
+      HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -67,8 +67,9 @@ int neo_set_pixel(Neopixel_t *neo, int pixel_id, Color_t color) {
     }
 
     size_t start_index = pixel_id * NEO_PIXEL_MSG_SIZE_BYTES;
-    neo->buffer[start_index] = color.r;
-    neo->buffer[start_index + 1] = color.g;
+    // Neopixels work in GRB mode
+    neo->buffer[start_index] = color.g;
+    neo->buffer[start_index + 1] = color.r;
     neo->buffer[start_index + 2] = color.b;
     
     return 0;
@@ -89,7 +90,8 @@ void free_neopixel(Neopixel_t *neo) {
  */ 
 void led_render(Neopixel_t *neo) {
   if (neo_dma_index != 0 || hdma_tim2_ch1.State != HAL_DMA_STATE_READY) {
-      // Ongoing transfer, cancel!
+      return;
+      // Ongoing transfer, cancel previous buffer
       for (uint8_t i = 0; i < (neopixel->num_pixels * NEO_PIXEL_MSG_SIZE_BYTES); i++) {
           wr_buf[i] = 0;
       }
@@ -136,24 +138,24 @@ void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) {
  * Same as above, but fills the second half of the buffer (for odd indexed
  * neopixels) instead of the first half of the buffer
  */
-//void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) {
-//    int num_pixels = neopixel->num_pixels;
-//    if (neo_dma_index < num_pixels) {
-//        for(uint_fast8_t i = 24; i < 48; i++) {
-//            wr_buf[i] = (neopixel->buffer[(i/8) + (neo_dma_index*NEO_PIXEL_MSG_SIZE_BYTES)] & (1 << (i%8))) ? PWM_HI : PWM_LO;
-//        }
-//        neo_dma_index++;
-//    } else if (neo_dma_index < num_pixels + 2) {
-//        // 1.25 us per bit * 24 bits per pixel = 30 us per pixel.
-//        // 2 pixels or 60 us is enough to reset
-//        for (uint8_t i = 0; i < 48 / 2; i++) {
-//            wr_buf[i] = 0;
-//        }
-//        neo_dma_index++;
-//    }
-//    else {
-//        // Sending complete, stop until next led_render call
-//        neo_dma_index = 0;
-//        HAL_TIM_PWM_Stop_DMA(&htim2, TIM_CHANNEL_1);
-//    }
-//}
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) {
+    int num_pixels = neopixel->num_pixels;
+    if (neo_dma_index < num_pixels) {
+        for(uint_fast8_t i = 24; i < 48; i++) {
+            wr_buf[i] = (neopixel->buffer[(i/8) + (neo_dma_index*NEO_PIXEL_MSG_SIZE_BYTES)] & (1 << (i%8))) ? PWM_HI : PWM_LO;
+        }
+        neo_dma_index++;
+    } else if (neo_dma_index < num_pixels + 2) {
+        // 1.25 us per bit * 24 bits per pixel = 30 us per pixel.
+        // 2 pixels or 60 us is enough to reset
+        for (uint8_t i = 0; i < 48 / 2; i++) {
+            wr_buf[i] = 0;
+        }
+        neo_dma_index++;
+    }
+    else {
+        // Sending complete, stop until next led_render call
+        neo_dma_index = 0;
+        HAL_TIM_PWM_Stop_DMA(&htim2, TIM_CHANNEL_1);
+    }
+}
