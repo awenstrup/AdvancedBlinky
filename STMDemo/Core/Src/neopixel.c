@@ -11,9 +11,9 @@ uint_fast8_t neo_dma_index = 0; // keep track of the next Neopixel to write to t
 
 Neopixel_t *neopixel;
 /* 
-For now, create a single neopixel and force the name "neopixel"
+For now, create a single neopixel.
 In theory, we should have an array or list of these so we can have
-abritrarily many, but idk how much computation overhead that'll add
+arbitrarily many, but idk how much computation overhead that'll add
 or if we'll be able to realistically run more than one, so we just
 create one for now. In a perfect world, we could do this:
 
@@ -24,6 +24,7 @@ n2 = neo_initialize_strip(6)  // create another one
 but instead, we write this:
 
 n1 = neo_initialize_strip(5)  // only one allowed
+n2 = neo_initialize_strip(5)  // this overwrites n1
 
 */
 
@@ -110,10 +111,10 @@ void led_render(Neopixel_t *neo) {
 }
 
 /**
- * @brief IRQ to keep the DMA buffer full of the lastest information
+ * @brief IRQ to keep the DMA buffer full of the latest information
  * 
- * TODO this is only half done, figure out how to get NeoPixel data
- * in here.
+ * When we have sent the first half of the buffer, we are free to
+ * refill the first half with new data (the next LED to be sent)
  */
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) {
     int num_pixels = neopixel->num_pixels;

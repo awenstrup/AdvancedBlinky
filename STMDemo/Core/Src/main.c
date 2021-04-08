@@ -94,17 +94,13 @@ int main(void) {
     /* USER CODE BEGIN 2 */
     int num_pixels = 5;
     Neopixel_t *neopixel = neo_initialize_strip(num_pixels);
-    Color_t *color = malloc(sizeof(Color_t)); // set to red below
-    color->r = 0;
-    color->g = 0;
-    color->b = 0;
 
-    Color_t colors[5] = {
-        { 255, 0, 0 },
-        { 255, 255, 0 },
-        { 0, 255, 0 },
-        { 0, 0, 255 },
-        { 255, 0, 255 }
+    Color_t colors[5] = { // the rainbow!
+        { 255, 0, 0 }, // red
+        { 255, 255, 0 }, // yellow (orange wasn't working)
+        { 0, 255, 0 }, // green
+        { 0, 0, 255 }, // blue
+        { 255, 0, 255 } // purple
     };
 
   for (int i = 0; i < num_pixels; i++) {
@@ -117,7 +113,7 @@ int main(void) {
     while (1)
     {
       led_render(neopixel);
-      HAL_Delay(10);
+      HAL_Delay(10); // rendering is mostly handled by IRQs, so we block this loop
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

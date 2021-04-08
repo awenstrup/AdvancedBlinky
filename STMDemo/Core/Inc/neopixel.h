@@ -15,7 +15,7 @@
 
 // STRUCTS *************
 struct {
-    uint8_t r, g, b;  // Use char to fit the 8 bit values
+    uint8_t r, g, b;  // Use uint8_t to fit the 8 bit values
 } typedef Color_t;
 
 struct {
